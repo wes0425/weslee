@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{%load static%}
+{% load crispy_forms_tags %}
+{% block content %}
+<style type="text/css">
+	.title{
+	color: purple;
+}
+</style>
+ <center><h1 class="title">Respond </h1></center>
+	<form method="POST">
+	{% csrf_token %}
+
+	{{form|crispy}}
+
+	<input type="submit" name="submit" value="respond">
+
+	</form>
+{% endblock %}

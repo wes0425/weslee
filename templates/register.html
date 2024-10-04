@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{%  load static%}
+{% load crispy_forms_tags %}
+
+
+{% block content %}
+<style type="text/css">
+	.lead{
+		color:black;
+		font-size: 17px;
+		font-weight: bolder
+
+}
+.title{
+	background-color: purple;
+	color: white;
+	padding: 5px;
+}
+
+</style>
+ 
+<center><h1 class="title">Register</h1></center>
+<br>
+<br>
+
+
+<form method="POST">
+	{% csrf_token %}
+
+      {{form|crispy}}
+
+<input type="submit" name="submit"  >
+
+</form>
+<br>
+<br>
+<br>
+{% endblock %}

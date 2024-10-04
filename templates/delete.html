@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{%load static%}
+{% load crispy_forms_tags %}
+{% block content %}
+<style type="text/css">
+	.title{
+	color: purple;
+}
+</style>
+    <p>Are you sure yo want to delete {{appointment}}</p>
+	<form method="POST" action="">
+	{% csrf_token %}
+
+
+
+	<center><input type="submit" name="delete"></center>
+
+	</form>
+    <a href="{% url 'home' %}">Cancel</a>
+{% endblock %}
+

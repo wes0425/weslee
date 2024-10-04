@@ -1,0 +1,105 @@
+{% extends 'base.html' %}
+{%load static%}
+{% load crispy_forms_tags %}
+
+
+{% block content %}
+<style type="text/css">
+  input[type="text"],input[type="password"]{
+    padding-bottom: 10px;
+    font-size: 17px;
+  }
+  
+    .lead{
+    
+    font-size: 40px;
+    font-weight: bolder
+
+}
+.title{
+  background-color: purple;
+  color: white;
+  padding: 5px;
+}
+.status{
+  color:white;
+  font-weight: bold;
+}
+thead{
+  background-color:purple;
+  color: white;
+}
+.s{
+  font-weight: bold;
+  color: purple;
+}
+.btn{
+    background-color: purple;
+    color: white;
+  }
+  svg , h4{
+    color: purple;
+    font-weight: purple;
+    letter-spacing: 2px;
+
+  }
+   h6{
+    color:orange;
+    letter-spacing: 2px;
+
+  }
+
+</style>
+
+<h6>Enter your REGISTRATION NUMBER or FULL NAME to search for the status of the appointment you booked </h6>
+<br>
+    <form class="form-inline my-2 my-lg-0" method="GET" action="{% url 'home' %}">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="q">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+    <br>
+    <br>
+    <center>
+     <a class="nav-link" href="{% url 'create_appointments_page' %}" style="color: purple;font-weight: bold;"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-circle" viewBox="0 0 16 16">
+  <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+  <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+</svg>Appointment</a>
+</center>
+    <br>
+
+<center>
+     <p class="lead">Booked appointments </p>
+
+<div class="table-responsive">
+   <table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Lecturer</th>
+      <th scope="col">Student Name</th>
+      <th scope="col">Student Reg</th>
+      <th scope="col">Day</th>
+      <th scope="col">Time</th>
+      <th scope="col" class="status">STATUS</th>
+
+    </tr>
+  </thead>
+  <tbody>
+    {% for appointment in appointments %}
+    <tr>
+      <th scope="row"></th>
+      <td>{{appointment.lecturer_full_name}}</td>
+      <td>{{appointment.student_full_name}}</td>
+      <td>{{appointment.student_reg}}</td>
+      <td>{{appointment.appointment_day}}</td>
+      <td>{{appointment.appointment_time}}</td>
+      <td class="s">{{appointment.statuses}}</td>
+    </tr>
+    <tr>
+      {% endfor %}
+  </tbody>
+</table>
+ </div>
+{% endblock %}
+
+
